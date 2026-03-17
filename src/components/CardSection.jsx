@@ -35,7 +35,7 @@ function Card({ film }) {
   return (
     <Link
       to={`/film/${film.id}`}
-      className="flex-none w-full max-w-48 group"
+      className="flex-none w-24 lg:w-48 group"
     >
       {/* Poster — 2:3 portrait ratio */}
       <div className="relative aspect-[2/3] overflow-hidden rounded bg-card">
@@ -57,7 +57,7 @@ function Card({ film }) {
       </div>
 
       {/* Title below card — subtle, appears on hover */}
-      <p className="mt-2 text-xs text-white/40 group-hover:text-white/70 transition-colors truncate">
+      <p className="mt-2 text-sm text-white/80 group-hover:text-white transition-colors truncate lg:hidden md:hidden">
         {film.title}
       </p>
     </Link>
