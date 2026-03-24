@@ -83,14 +83,14 @@ export default function Film() {
           />
         )}
 
-        {/* Select Stills */}
-        <ContentSection
-          title="Select Stills"
-          type="stills"
-          items={film.stills}
-        />
-
       </div>
+
+      {/* Select Stills — outside max-w-4xl so the carousel fills full page width */}
+      <ContentSection
+        title="Select Stills"
+        type="stills"
+        items={film.stills}
+      />
 
       {/* More Like This — full-width card row */}
       {moreLikeThis.length > 0 && (

@@ -81,27 +81,16 @@ function TextBlock({ text }) {
 }
 
 function StillsGrid({ items }) {
-  // Break out of the section's horizontal padding so the carousel runs edge-to-edge
-  const scrollClass = "flex gap-3 overflow-x-auto scrollbar-hide pb-2 -mx-6 px-6 md:-mx-10 md:px-10"
-
-  if (!items?.length) return (
-    <div className={scrollClass}>
-      {[0, 1, 2].map((i) => (
-        <div key={i} className="flex-none w-[38vw] md:w-[35vw] aspect-video bg-white/5 rounded" />
-      ))}
-    </div>
-  )
+  const list = items?.length ? items : [null, null, null]
 
   return (
-    <div className={scrollClass}>
-      {items.map((src, i) => (
-        // No fixed aspect ratio — images render at their natural height
-        <div key={i} className="flex-none w-[38vw] md:w-[35vw] overflow-hidden rounded bg-white/5">
-          <img
-            src={src}
-            alt={`Still ${i + 1}`}
-            className="w-full h-auto block"
-          />
+    <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2">
+      {list.map((src, i) => (
+        <div key={i} className="shrink-0 w-[38%] overflow-hidden rounded bg-white/5">
+          {src
+            ? <img src={src} alt={`Still ${i + 1}`} className="w-full h-auto block" />
+            : <div className="aspect-video" />
+          }
         </div>
       ))}
     </div>
