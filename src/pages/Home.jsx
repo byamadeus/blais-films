@@ -1,8 +1,10 @@
 import Navigation from '../components/Navigation'
 import HeroSection from '../components/HeroSection'
 import CardSection from '../components/CardSection'
+import DirectorFeature from '../components/DirectorFeature'
 import Footer from '../components/Footer'
 import { director, films } from '../data/films'
+import { about } from '../data/about'
 
 // Home page — director portfolio landing.
 // Mirrors the Netflix home: full-height hero, card row below.
@@ -29,6 +31,13 @@ export default function Home() {
       <div className="relative z-10 -mt-64">
         <CardSection title="Featured Titles" films={films} />
       </div>
+
+      {/* Director feature — takeover block linking to About page */}
+      <DirectorFeature
+        headshot={about.headshot}
+        name="About Blais"
+        tagline={about.shortBio}
+      />
 
       <Footer />
 

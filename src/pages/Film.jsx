@@ -47,8 +47,8 @@ export default function Film() {
             : null
         }
         secondaryAction={
-          film.vimeoTrailerUrl
-            ? { label: 'Trailer', href: film.vimeoTrailerUrl }
+          film.trailerUrl
+            ? { label: 'Trailer', href: film.trailerUrl }
             : null
         }
       />
