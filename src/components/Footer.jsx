@@ -4,7 +4,7 @@
 //   instagram, youtube, vimeo — profile URLs (leave blank to hide)
 
 export default function Footer({
-  instagram = 'https://instagram.com/',
+  instagram = 'https://www.instagram.com/blaisludwig/',
   youtube = 'https://youtube.com/',
   vimeo = 'https://vimeo.com/',
 }) {

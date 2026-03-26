@@ -51,6 +51,11 @@ export default function Film() {
             ? { label: 'Trailer', href: film.trailerUrl }
             : null
         }
+        tertiaryAction={
+          film.miniDocUrl
+            ? { label: 'Watch Mini Doc', href: film.miniDocUrl }
+            : null
+        }
       />
 
       {/* ── Below-the-fold content ── */}

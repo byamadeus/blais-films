@@ -3,7 +3,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const about = {
-  headshot: '/blais/blais-headshot.jpg',
+  headshot: '/blais/blais-headshot.webp',
 
   headline: 'About Blais',
 

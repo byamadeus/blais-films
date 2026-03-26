@@ -20,6 +20,7 @@ export default function HeroSection({
   backgroundImage,
   primaryAction,
   secondaryAction,
+  tertiaryAction,
   size = 'full',
 }) {
   const heightClass = size === 'full' ? 'h-screen' : 'h-[85vh]'
@@ -72,7 +73,7 @@ export default function HeroSection({
         )}
 
         {/* Buttons */}
-        {(primaryAction || secondaryAction) && (
+        {(primaryAction || secondaryAction || tertiaryAction) && (
           <div className="flex items-center gap-3 flex-wrap">
             {primaryAction && (
               <a
@@ -96,6 +97,16 @@ export default function HeroSection({
                 className="inline-flex items-center px-5 py-2.5 bg-white/20 text-white text-sm font-medium rounded hover:bg-white/30 transition-colors border border-white/20"
               >
                 {secondaryAction.label}
+              </a>
+            )}
+            {tertiaryAction && (
+              <a
+                href={tertiaryAction.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-5 py-2.5 bg-white/20 text-white text-sm font-medium rounded hover:bg-white/30 transition-colors border border-white/20"
+              >
+                {tertiaryAction.label}
               </a>
             )}
           </div>
