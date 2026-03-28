@@ -11,9 +11,13 @@ export const about = {
 
   longBio: 'Blais Cameron is a Director, Producer, and Writer based in Nashville, TN. His work spans narrative short film, music video, and documentary — always anchored in emotional truth and a drive to tell stories that matter. Recognized by the 54 Hour Film Festival, the Croatian International Film Festival, and others, he\'s built a reputation for delivering under pressure without sacrificing depth.',
 
-  // Buttons on the hero — href can be an email, link, or anything
-  primaryAction:   { label: 'Hire Me',     href: 'mailto:blais@blaisfilms.com' },
-  secondaryAction: { label: 'Inspire Me',  href: 'https://vimeo.com/' },
+  // Contact + resume
+  email:     'blaislcameron@gmail.com',
+  resumeUrl: 'https://linkedin.com/in/blaiscameron',
+
+  // Hero CTA labels (actions are handled by modals in About.jsx)
+  primaryAction:   { label: 'Hire Me'    },
+  secondaryAction: { label: 'Inspire Me' },
 
   // Right-column fun facts — edit freely
   details: [

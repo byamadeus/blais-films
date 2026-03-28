@@ -1,4 +1,5 @@
 import MuxPlayer from '@mux/mux-player-react'
+import { useState, useEffect } from 'react'
 
 // HeroSection — full-viewport background (video or still) with content overlay.
 //
@@ -7,10 +8,11 @@ import MuxPlayer from '@mux/mux-player-react'
 //   subtitle        — small label above title, e.g. "Director, Producer, Writer"
 //   description     — short paragraph below title
 //   muxPlaybackId   — Mux playback ID for background video (optional)
-//   backgroundImage — fallback/static image path (used when no muxPlaybackId)
-//   primaryAction   — { label, href } for the main button (e.g. "Watch Film")
+//   backgroundImage — fallback/static image path, always shown first
+//   primaryAction   — { label, href } for the main button
 //   secondaryAction — { label, href } for a second button (optional)
 //   size            — 'full' (100vh, home) | 'large' (85vh, film page)
+//   videoDelay      — ms before video fades in (default 2000)
 
 export default function HeroSection({
   title,
@@ -20,32 +22,51 @@ export default function HeroSection({
   backgroundImage,
   primaryAction,
   secondaryAction,
-  tertiaryAction,
   size = 'full',
+  videoDelay = 2000,
 }) {
   const heightClass = size === 'full' ? 'h-screen' : 'h-[85vh]'
+
+  // Start false — fades to true after videoDelay ms
+  const [videoVisible, setVideoVisible] = useState(false)
+
+  useEffect(() => {
+    if (!muxPlaybackId) return
+    const timer = setTimeout(() => setVideoVisible(true), videoDelay)
+    return () => clearTimeout(timer)
+  }, [muxPlaybackId, videoDelay])
 
   return (
     <section className={`relative w-full ${heightClass} overflow-hidden bg-black`}>
 
-      {/* ── Background: Mux video or static image ── */}
-      {muxPlaybackId ? (
-        <MuxPlayer
-          playbackId={muxPlaybackId}
-          streamType="on-demand"
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="hero-video"
-        />
-      ) : backgroundImage ? (
+      {/* ── Layer 1: still image — always present, instant fallback ── */}
+      {backgroundImage && (
         <img
           src={backgroundImage}
           alt=""
           className="absolute inset-0 w-full h-full object-cover object-top"
         />
-      ) : null}
+      )}
+
+      {/* ── Layer 2: Mux video — mounts immediately to start buffering,
+              fades in over the still after videoDelay ms ── */}
+      {muxPlaybackId && (
+        <div
+          className={`absolute inset-0 transition-opacity duration-[1500ms] ${
+            videoVisible ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <MuxPlayer
+            playbackId={muxPlaybackId}
+            streamType="on-demand"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="hero-video"
+          />
+        </div>
+      )}
 
       {/* ── Gradient overlays ── */}
       {/* Bottom fade — pulls content out of the image */}
@@ -73,7 +94,7 @@ export default function HeroSection({
         )}
 
         {/* Buttons */}
-        {(primaryAction || secondaryAction || tertiaryAction) && (
+        {(primaryAction || secondaryAction) && (
           <div className="flex items-center gap-3 flex-wrap">
             {primaryAction && (
               <a
@@ -82,7 +103,6 @@ export default function HeroSection({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black text-sm font-medium rounded hover:bg-white/90 transition-colors"
               >
-                {/* Play icon */}
                 <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 1L11 7L1 13V1Z" fill="currentColor"/>
                 </svg>
@@ -97,16 +117,6 @@ export default function HeroSection({
                 className="inline-flex items-center px-5 py-2.5 bg-white/20 text-white text-sm font-medium rounded hover:bg-white/30 transition-colors border border-white/20"
               >
                 {secondaryAction.label}
-              </a>
-            )}
-            {tertiaryAction && (
-              <a
-                href={tertiaryAction.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-5 py-2.5 bg-white/20 text-white text-sm font-medium rounded hover:bg-white/30 transition-colors border border-white/20"
-              >
-                {tertiaryAction.label}
               </a>
             )}
           </div>
