@@ -11,7 +11,16 @@
 //   credits: [{ name, role }]
 //   stills:  ['/path/to/image.jpg', ...]
 
-export default function ContentSection({ title, type, items, text }) {
+// ContentSection — a labeled section block used on the film page.
+//
+// Props:
+//   title  — section heading
+//   type   — 'awards' | 'credits' | 'text' | 'stills' | 'video'
+//   items  — array (awards, credits, stills)
+//   text   — string (type="text")
+//   url    — string (type="video") — Vimeo URL, YouTube URL, or Mux playback ID
+
+export default function ContentSection({ title, type, items, text, url }) {
   return (
     <section className="px-6 md:px-10 py-8 border-t border-white/10">
 
@@ -21,10 +30,11 @@ export default function ContentSection({ title, type, items, text }) {
         </h3>
       )}
 
-      {type === 'awards' && <AwardsList items={items} />}
+      {type === 'video'   && <VideoPlayer url={url} />}
+      {type === 'awards'  && <AwardsList items={items} />}
       {type === 'credits' && <CreditsList items={items} />}
-      {type === 'text' && <TextBlock text={text} />}
-      {type === 'stills' && <StillsGrid items={items} />}
+      {type === 'text'    && <TextBlock text={text} />}
+      {type === 'stills'  && <StillsGrid items={items} />}
 
     </section>
   )
@@ -95,4 +105,96 @@ function StillsGrid({ items }) {
       ))}
     </div>
   )
+}
+
+// ── VideoPlayer ───────────────────────────────────────────────────────────────
+// Accepts a single `url` and auto-detects the platform.
+//
+//   Vimeo    https://vimeo.com/123456789  or  https://vimeo.com/123456789/hash
+//   YouTube  https://youtube.com/watch?v=ID  or  https://youtu.be/ID
+//   Mux      bare playback ID (alphanumeric, no slashes)
+
+function detectPlatform(url) {
+  if (!url) return null
+  if (url.includes('vimeo.com'))                         return 'vimeo'
+  if (url.includes('youtube.com') || url.includes('youtu.be')) return 'youtube'
+  // Bare Mux playback ID — alphanumeric string, typically 25+ chars, no path separators
+  if (/^[A-Za-z0-9]{20,}$/.test(url.trim()))            return 'mux'
+  return null
+}
+
+function vimeoEmbedUrl(url) {
+  // Handles both public (/123456789) and unlisted (/123456789/abcdef) Vimeo links
+  const match = url.match(/vimeo\.com\/(\d+)(?:\/([a-f0-9]+))?/)
+  if (!match) return null
+  const [, id, hash] = match
+  const params = `badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0`
+  return `https://player.vimeo.com/video/${id}?${hash ? `h=${hash}&` : ''}${params}`
+}
+
+function youtubeEmbedUrl(url) {
+  // Handles youtube.com/watch?v=ID, youtu.be/ID, youtube.com/embed/ID
+  const match = url.match(/(?:v=|youtu\.be\/|\/embed\/)([A-Za-z0-9_-]{11})/)
+  if (!match) return null
+  return `https://www.youtube.com/embed/${match[1]}?modestbranding=1&rel=0`
+}
+
+function VideoPlayer({ url }) {
+  const platform = detectPlatform(url)
+  if (!platform) return null
+
+  const wrapper = 'relative aspect-video w-full overflow-hidden rounded-lg bg-black'
+  const fill    = 'absolute inset-0 w-full h-full'
+
+  if (platform === 'mux') {
+    // Use a plain iframe against the Mux stream embed endpoint
+    return (
+      <div className={wrapper}>
+        <iframe
+          src={`https://stream.mux.com/${url.trim()}`}
+          className={fill}
+          frameBorder="0"
+          allow="autoplay; fullscreen"
+          allowFullScreen
+          title="Mux Video"
+        />
+      </div>
+    )
+  }
+
+  if (platform === 'vimeo') {
+    const src = vimeoEmbedUrl(url)
+    if (!src) return null
+    return (
+      <div className={wrapper}>
+        <iframe
+          src={src}
+          className={fill}
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          title="Vimeo Video"
+        />
+      </div>
+    )
+  }
+
+  if (platform === 'youtube') {
+    const src = youtubeEmbedUrl(url)
+    if (!src) return null
+    return (
+      <div className={wrapper}>
+        <iframe
+          src={src}
+          className={fill}
+          frameBorder="0"
+          allow="autoplay; fullscreen"
+          allowFullScreen
+          title="YouTube Video"
+        />
+      </div>
+    )
+  }
+
+  return null
 }

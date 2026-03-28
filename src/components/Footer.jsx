@@ -7,11 +7,13 @@ export default function Footer({
   instagram = 'https://www.instagram.com/blaisludwig/',
   youtube = 'https://youtube.com/',
   vimeo = 'https://vimeo.com/',
+  linkedin = 'https://linkedin.com/in/blaiscameron',
 }) {
   const socials = [
     { label: 'Instagram', href: instagram, Icon: InstagramIcon },
     { label: 'YouTube',   href: youtube,   Icon: YouTubeIcon   },
-    { label: 'Vimeo',     href: vimeo,     Icon: VimeoIcon     },
+    // { label: 'Vimeo',     href: vimeo,     Icon: VimeoIcon     },
+    { label: 'LinkedIn',     href: linkedin,     Icon: LinkedInIcon     },
   ].filter(s => s.href)
 
   return (
@@ -34,7 +36,7 @@ export default function Footer({
       </div>
 
       {/* Sitemap-style links */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+      {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
         <FooterCol heading="Films" links={[
           { label: 'Clocked Out',    href: '/film/clocked-out'    },
           { label: 'Kissed Ur Mom',  href: '/film/kissed-ur-mom'  },
@@ -54,37 +56,37 @@ export default function Footer({
         ]} />
       </div>
 
-      {/* Copyright */}
+      
       <p className="text-xs text-white/20">
         © {new Date().getFullYear()} Blais Cameron. All rights reserved.
-      </p>
+      </p> */}
 
     </footer>
   )
 }
 
-function FooterCol({ heading, links }) {
-  return (
-    <div>
-      <h4 className="text-xs uppercase tracking-widest text-white/30 mb-3">
-        {heading}
-      </h4>
-      <ul className="flex flex-col gap-2">
-        {links.map(({ label, href, external }) => (
-          <li key={label}>
-            <a
-              href={href}
-              {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className="text-xs text-white/50 hover:text-white/80 transition-colors"
-            >
-              {label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
+// function FooterCol({ heading, links }) {
+//   return (
+//     <div>
+//       <h4 className="text-xs uppercase tracking-widest text-white/30 mb-3">
+//         {heading}
+//       </h4>
+//       <ul className="flex flex-col gap-2">
+//         {links.map(({ label, href, external }) => (
+//           <li key={label}>
+//             <a
+//               href={href}
+//               {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+//               className="text-xs text-white/50 hover:text-white/80 transition-colors"
+//             >
+//               {label}
+//             </a>
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   )
+// }
 
 // ── Icon components ────────────────────────────────────────────────────────
 
@@ -107,10 +109,36 @@ function YouTubeIcon() {
   )
 }
 
-function VimeoIcon() {
+// function VimeoIcon() {
+//   return (
+//     <svg width="20" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+//       <path d="M22 7.1C21.9 9.3 20.4 12.2 17.5 16C14.5 20 11.9 22 9.7 22C8.3 22 7.1 20.7 6.1 18.1L4.3 11.5C3.6 8.9 2.8 7.6 1.9 7.6C1.7 7.6 1 8.1 0 9L1 7.9C4 5.2 6.9 3.8 9.7 3.5C11.4 3.3 12.7 4.2 13.5 6.1C14.3 8.1 14.8 9.8 15 11.2C15.6 9 16.5 6.8 17.8 5.6C18.6 4.9 19.5 4.5 20.5 4.5C21.4 4.6 22 5.5 22 7.1Z" stroke="currentColor" strokeWidth="1.5"/>
+//     </svg>
+//   )
+// }
+
+function LinkedInIcon() {
   return (
-    <svg width="20" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M22 7.1C21.9 9.3 20.4 12.2 17.5 16C14.5 20 11.9 22 9.7 22C8.3 22 7.1 20.7 6.1 18.1L4.3 11.5C3.6 8.9 2.8 7.6 1.9 7.6C1.7 7.6 1 8.1 0 9L1 7.9C4 5.2 6.9 3.8 9.7 3.5C11.4 3.3 12.7 4.2 13.5 6.1C14.3 8.1 14.8 9.8 15 11.2C15.6 9 16.5 6.8 17.8 5.6C18.6 4.9 19.5 4.5 20.5 4.5C21.4 4.6 22 5.5 22 7.1Z" stroke="currentColor" strokeWidth="1.5"/>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Outer rounded square container */}
+      <path 
+        d="M20 3H4C3.44772 3 3 3.44772 3 4V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20V4C21 3.44772 20.5523 3 20 3Z" 
+        stroke="currentColor" 
+        strokeWidth="1.5" 
+        strokeLinejoin="round"
+      />
+      {/* The letter 'i' - dot and stem */}
+      <path d="M8 11V17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      <path d="M8 8H8.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      
+      {/* The letter 'n' - arch and stem */}
+      <path 
+        d="M12 11V17M12 11C12 9.89543 12.8954 9 14 9C15.1046 9 16 9.89543 16 11V17" 
+        stroke="currentColor" 
+        strokeWidth="1.5" 
+        strokeLinecap="round" 
+        strokeLinejoin="round"
+      />
     </svg>
-  )
+  );
 }

@@ -12,7 +12,7 @@ import sharp from 'sharp'
 import { readdirSync, existsSync, statSync } from 'fs'
 import { join, extname, basename } from 'path'
 
-const DIRS    = ['public/posters', 'public/stills', 'public/blais']
+const DIRS    = ['public/posters', 'public/stills', 'public/thumbnails', 'public/blais']
 const CONVERT = new Set(['.jpg', '.jpeg', '.png'])
 const QUALITY = 85
 

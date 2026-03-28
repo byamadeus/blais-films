@@ -42,18 +42,13 @@ export default function Film() {
         backgroundImage={film.heroStill}
         size="large"
         primaryAction={
-          film.vimeoUrl
-            ? { label: 'Watch Film', href: film.vimeoUrl }
+          film.movieUrl
+            ? { label: 'Watch', href: film.movieUrl }
             : null
         }
         secondaryAction={
           film.trailerUrl
             ? { label: 'Trailer', href: film.trailerUrl }
-            : null
-        }
-        tertiaryAction={
-          film.miniDocUrl
-            ? { label: 'Watch Mini Doc', href: film.miniDocUrl }
             : null
         }
       />
@@ -85,6 +80,15 @@ export default function Film() {
             title="More About the Film"
             type="text"
             text={film.description}
+          />
+        )}
+
+        {/* Mini Doc — embedded player, shown only when miniDocUrl is set */}
+        {film.miniDocUrl && (
+          <ContentSection
+            title="Behind the Scenes"
+            type="video"
+            url={film.miniDocUrl}
           />
         )}
 

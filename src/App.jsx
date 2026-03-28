@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/react'
 import Home from './pages/Home'
 import Film from './pages/Film'
 import About from './pages/About'
+import Commercial from './pages/CommercialPage'
 
 // Scrolls to the top whenever the route changes (including back/forward)
 function ScrollToTop() {
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/film/:id" element={<Film />} />
         <Route path="/about" element={<About />} />
+        <Route path="/commercial/:id" element={<Commercial />} />
       </Routes>
     </>
   )

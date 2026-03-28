@@ -3,7 +3,7 @@ import HeroSection from '../components/HeroSection'
 import CardSection from '../components/CardSection'
 import DirectorFeature from '../components/DirectorFeature'
 import Footer from '../components/Footer'
-import { director, films } from '../data/films'
+import { director, films, commercials } from '../data/films'
 import { about } from '../data/about'
 
 // Home page — director portfolio landing.
@@ -29,8 +29,11 @@ export default function Home() {
 
       {/* Film card row — negative margin pulls it up over the hero's bottom fade */}
       <div className="relative z-10 -mt-64">
-        <CardSection title="Featured Titles" films={films} />
+        <CardSection title="Featured Narratives" films={films} />
       </div>
+
+      {/* Commercial work row */}
+      <CardSection title="Commercial Work" films={commercials} variant="commercial" />
 
       {/* Director feature — takeover block linking to About page */}
       <DirectorFeature
