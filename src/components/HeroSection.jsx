@@ -13,6 +13,7 @@ import { useState, useEffect } from 'react'
 //   secondaryAction — { label, href } for a second button (optional)
 //   size            — 'full' (100vh, home) | 'large' (85vh, film page)
 //   videoDelay      — ms before video fades in (default 2000)
+//   loadEffect      — 'fade' (default) | 'none' (video visible immediately, no delay)
 
 export default function HeroSection({
   title,
@@ -24,17 +25,19 @@ export default function HeroSection({
   secondaryAction,
   size = 'full',
   videoDelay = 2000,
+  loadEffect = 'fade',
 }) {
   const heightClass = size === 'full' ? 'h-screen' : 'h-[85vh]'
+  const noEffect = loadEffect === 'none'
 
-  // Start false — fades to true after videoDelay ms
-  const [videoVisible, setVideoVisible] = useState(false)
+  // Start false — fades to true after videoDelay ms (skipped when loadEffect='none')
+  const [videoVisible, setVideoVisible] = useState(noEffect)
 
   useEffect(() => {
-    if (!muxPlaybackId) return
+    if (noEffect || !muxPlaybackId) return
     const timer = setTimeout(() => setVideoVisible(true), videoDelay)
     return () => clearTimeout(timer)
-  }, [muxPlaybackId, videoDelay])
+  }, [muxPlaybackId, videoDelay, noEffect])
 
   return (
     <section className={`relative w-full ${heightClass} overflow-hidden bg-black`}>

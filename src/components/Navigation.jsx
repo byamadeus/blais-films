@@ -12,7 +12,8 @@ export default function Navigation({ showBack = false }) {
       {/* Left: logo or back button */}
       {showBack ? (
         <button
-          onClick={() => navigate(-1)}
+          // onClick={() => navigate(-1)}
+          onClick={() => navigate("/")}
           className="flex items-center gap-2 text-xs uppercase tracking-widest text-white/70 hover:text-white transition-colors"
         >
           {/* Simple left arrow */}

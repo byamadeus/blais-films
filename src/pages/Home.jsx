@@ -24,6 +24,7 @@ export default function Home() {
         muxPlaybackId={director.muxPlaybackId}
         backgroundImage={director.heroStill}
         size="full"
+        // loadEffect="none"
         // No buttons on the home hero — just identity
       />
 
