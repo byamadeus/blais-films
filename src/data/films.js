@@ -20,7 +20,7 @@ export const director = {
   roles: ['Director', 'Producer', 'Writer'],
   bio: 'Recognized by the 54 Hour Film Festival, Croatian International Film Festival, and others.',
   muxPlaybackId: 'b8UB6nXPTSQWgmcncf2SaGHVnATLIBns4FYS7ramxNg',
-  heroStill: '/blais/hero-headshot.webp',
+  heroStill: '/blais/hero-headshot-1.webp',
 }
 
 export const films = [
