@@ -21,7 +21,7 @@ export default function Home() {
         title={director.name}
         subtitle={director.roles.join(', ')}
         description={director.bio}
-        muxPlaybackId={director.muxPlaybackId}
+        // muxPlaybackId={director.muxPlaybackId}
         backgroundImage={director.heroStill}
         size="full"
         // loadEffect="none"

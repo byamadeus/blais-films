@@ -7,7 +7,7 @@ export const about = {
 
   headline: 'About Blais',
 
-  shortBio: 'Blais is an award-winning film-maker who\'s worked alongside some of the biggest names in production.',
+  shortBio: 'Blais is an award-winning filmmaker focused on telling emotionally driven, transformative stories that explore the essence of human connection',
 
   longBio: 'Blais Cameron is a Director, Producer, and Writer based in Nashville, TN. His work spans narrative short film, music video, and documentary — always anchored in emotional truth and a drive to tell stories that matter. Recognized by the 54 Hour Film Festival, the Croatian International Film Festival, and others, he\'s built a reputation for delivering under pressure without sacrificing depth.',
 
@@ -28,7 +28,6 @@ export const about = {
     { label: 'Height',          value: '6\'0"'              },
     { label: 'Children',        value: 'None'               },
     { label: 'Nickname',        value: 'N/A'                },
-    { label: 'Net Worth',       value: '$5 Billion'         },
   ],
 
   // Full credits table — sourced from credits CSV
