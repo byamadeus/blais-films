@@ -25,7 +25,7 @@ export const about = {
     { label: 'Based In',        value: 'Nashville, TN'      },
     { label: 'Favorite Film',   value: 'Little Miss Sunshine' },
     { label: 'Age',             value: '21'                 },
-    { label: 'Height',          value: '6\'0"'              },
+    { label: 'Height',          value: '6\'2"'              },
     { label: 'Children',        value: 'None'               },
     { label: 'Nickname',        value: 'N/A'                },
   ],
