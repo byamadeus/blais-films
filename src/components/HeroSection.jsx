@@ -55,7 +55,7 @@ export default function HeroSection({
               fades in over the still after videoDelay ms ── */}
       {muxPlaybackId && (
         <div
-          className={`absolute inset-0 transition-opacity duration-[1500ms] ${
+          className={`absolute top-[-12%] inset-0 transition-opacity duration-[1500ms] ${
             videoVisible ? 'opacity-100' : 'opacity-0'
           }`}
         >

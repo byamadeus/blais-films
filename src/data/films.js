@@ -19,7 +19,7 @@ export const director = {
   name: 'Blais Cameron',
   roles: ['Director', 'Producer', 'Writer'],
   bio: 'Recognized by the 54 Hour Film Festival, Croatian International Film Festival, and others.',
-  muxPlaybackId: 'b8UB6nXPTSQWgmcncf2SaGHVnATLIBns4FYS7ramxNg',
+  muxPlaybackId: 'jp16Ogkll9u4Nw2L7uoVa7HKAW00Nv9QlyBtMBxWNkmA',
   heroStill: '/blais/hero-headshot-1.webp',
 }
 
