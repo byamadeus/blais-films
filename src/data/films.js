@@ -50,6 +50,7 @@ export const films = [
       '/stills/films/the-view-was-everything-1.webp',
       '/stills/films/the-view-was-everything-2.webp',
       '/stills/films/the-view-was-everything-3.webp',
+      '/stills/films/the-view-was-everything-4.webp',
     ],
   },
   {
