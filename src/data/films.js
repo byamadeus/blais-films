@@ -25,31 +25,6 @@ export const director = {
 
 export const films = [
   {
-    id: 'i-kissed-ur-mom',
-    title: 'I Kissed Ur Mom',
-    year: 2026,
-    roles: ['Director', 'Producer', 'Writer'],
-    logline: 'Before playing a song called "I Kissed Ur Mom" in his middle school talent show, Jason must face one of the most difficult challenges in life — slowly losing the people you love.',
-    description: 'This film is based on two true stories from when I was a kid, about the moments in life when we are forced to grow up faster than we should.',
-    poster: '/posters/i-kissed-ur-mom.webp',
-    heroStill: '/stills/films/i-kissed-your-mom-0.webp',
-    muxPlaybackId: '00VbLCe5r6K8Go01s5OykZN2Ysr7bA02JbnCvXz01rYPSXk',
-    movieUrl: 'https://vimeo.com/1171818555',
-    trailerUrl: null,
-    miniDocUrl: null,
-    awards: [],
-    credits: [
-      { name: 'Blais Cameron', role: 'Director / Producer / Writer' },
-      { name: 'Evyn J Barron', role: 'DP / Producer / Writer / Editor' },
-    ],
-    stills: [
-      '/stills/films/i-kissed-your-mom-1.webp',
-      '/stills/films/i-kissed-your-mom-2.webp',
-      '/stills/films/i-kissed-your-mom-3.webp',
-      '/stills/films/i-kissed-your-mom-4.webp',
-    ],
-  },
-  {
     id: 'the-view-was-everything',
     title: 'The View Was Everything',
     year: 2025,
@@ -75,6 +50,31 @@ export const films = [
       '/stills/films/the-view-was-everything-1.webp',
       '/stills/films/the-view-was-everything-2.webp',
       '/stills/films/the-view-was-everything-3.webp',
+    ],
+  },
+  {
+    id: 'i-kissed-ur-mom',
+    title: 'I Kissed Ur Mom',
+    year: 2026,
+    roles: ['Director', 'Producer', 'Writer'],
+    logline: 'Before playing a song called "I Kissed Ur Mom" in his middle school talent show, Jason must face one of the most difficult challenges in life — slowly losing the people you love.',
+    description: 'This film is based on two true stories from when I was a kid, about the moments in life when we are forced to grow up faster than we should.',
+    poster: '/posters/i-kissed-ur-mom.webp',
+    heroStill: '/stills/films/i-kissed-your-mom-0.webp',
+    muxPlaybackId: '00VbLCe5r6K8Go01s5OykZN2Ysr7bA02JbnCvXz01rYPSXk',
+    movieUrl: 'https://vimeo.com/1171818555',
+    trailerUrl: null,
+    miniDocUrl: null,
+    awards: [],
+    credits: [
+      { name: 'Blais Cameron', role: 'Director / Producer / Writer' },
+      { name: 'Evyn J Barron', role: 'DP / Producer / Writer / Editor' },
+    ],
+    stills: [
+      '/stills/films/i-kissed-your-mom-1.webp',
+      '/stills/films/i-kissed-your-mom-2.webp',
+      '/stills/films/i-kissed-your-mom-3.webp',
+      '/stills/films/i-kissed-your-mom-4.webp',
     ],
   },
 
