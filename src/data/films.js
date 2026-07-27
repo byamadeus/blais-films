@@ -42,6 +42,7 @@ export const films = [
       { name: 'Croatian International Film Festival', detail: 'Official Selection', year: 2026 },
     ],
     credits: [
+      { name: 'Blais Cameron', role: 'Director / Producer / Writer' },
       { name: 'Caroline Boland', role: 'Producer' },
       { name: 'Griffin Davis', role: 'DP' },
       { name: 'Evyn J Barron', role: 'Producer / Editor' },
