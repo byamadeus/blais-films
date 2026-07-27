@@ -38,13 +38,16 @@ export const films = [
     trailerUrl: null,
     miniDocUrl: null,
     awards: [
-      { name: 'CineHill International Film Festival', detail: 'Official Selection', year: 2025 },
+      { name: 'CineHill International Film Festival', detail: 'Official Selection', year: 2026 },
       { name: 'Croatian International Film Festival', detail: 'Official Selection', year: 2026 },
     ],
     credits: [
-      { name: 'Blais Cameron', role: 'Director / Producer / Writer' },
+      { name: 'Caroline Boland', role: 'Producer' },
       { name: 'Griffin Davis', role: 'DP' },
       { name: 'Evyn J Barron', role: 'Producer / Editor' },
+      { name: 'Marek Totušek', role: 'Sound Designer' },
+      { name: 'Jadran Mihelčić', role: 'Composer' },
+      { name: 'Julia Walsh', role: 'Production Design' },
     ],
     stills: [
       '/stills/films/the-view-was-everything-1.webp',
