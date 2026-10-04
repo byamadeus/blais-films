@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 // Props:
 //   title    — section label
 //   films    — array of items from films.js
-//   variant  — 'film' (default, 2:3 portrait poster) | 'commercial' (16:9 thumbnail)
+//   variant  — 'film' (default, 2:3 portrait poster) | 'commercial' (16:9 thumbnail) | 'press' (16:9 outlet card, links out)
 
 export default function CardSection({ title, films, variant = 'film' }) {
   if (!films?.length) return null
@@ -19,9 +19,9 @@ export default function CardSection({ title, films, variant = 'film' }) {
 
       <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-2">
         {films.map((item) =>
-          variant === 'commercial'
-            ? <CommercialCard key={item.id} item={item} />
-            : <FilmCard key={item.id} film={item} />
+          variant === 'commercial' ? <CommercialCard key={item.id} item={item} /> :
+          variant === 'press'      ? <PressCard key={item.id} item={item} /> :
+          <FilmCard key={item.id} film={item} />
         )}
       </div>
 
@@ -91,5 +91,37 @@ function CommercialCard({ item }) {
       </div>
 
     </Link>
+  )
+}
+
+// ── Press card — 16:9 outlet card, links out to the original article ────────
+
+function PressCard({ item }) {
+  return (
+    <a
+      href={item.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex-none w-56 md:w-72 group"
+    >
+      {/* Thumbnail stand-in — outlet name, no photo */}
+      <div className="relative aspect-video overflow-hidden rounded bg-white/5 flex items-center justify-center">
+        <span className="text-sm uppercase tracking-widest text-white/30 group-hover:text-white/50 transition-colors">
+          {item.outlet}
+        </span>
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+
+      {/* Metadata below */}
+      <div className="mt-2">
+        <p className="text-sm text-white leading-snug line-clamp-2 group-hover:text-white/80 transition-colors">
+          {item.headline}
+        </p>
+        <p className="text-xs text-white/40 mt-0.5">
+          {item.outlet} · {item.year}
+        </p>
+      </div>
+
+    </a>
   )
 }

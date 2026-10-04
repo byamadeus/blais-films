@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Film from './pages/Film'
 import About from './pages/About'
 import Commercial from './pages/CommercialPage'
+import News from './pages/News'
 
 // Scrolls to the top whenever the route changes (including back/forward)
 function ScrollToTop() {
@@ -26,6 +27,8 @@ export default function App() {
         <Route path="/film/:id" element={<Film />} />
         <Route path="/about" element={<About />} />
         <Route path="/commercial/:id" element={<Commercial />} />
+        {/* Hidden — not linked from Navigation or Footer, URL only */}
+        <Route path="/news" element={<News />} />
       </Routes>
     </>
   )
