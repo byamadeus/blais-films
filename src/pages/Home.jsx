@@ -5,6 +5,7 @@ import DirectorFeature from '../components/DirectorFeature'
 import Footer from '../components/Footer'
 import { director, films, commercials } from '../data/films'
 import { about } from '../data/about'
+import { press } from '../data/press'
 
 // Home page — director portfolio landing.
 // Mirrors the Netflix home: full-height hero, card row below.
@@ -35,6 +36,9 @@ export default function Home() {
 
       {/* Commercial work row */}
       <CardSection title="Commercial Work" films={commercials} variant="commercial" />
+
+      {/* Press mentions row */}
+      <CardSection title="In The Press" films={press} variant="press" />
 
       {/* Director feature — takeover block linking to About page */}
       <DirectorFeature

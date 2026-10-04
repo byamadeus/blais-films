@@ -94,7 +94,7 @@ function CommercialCard({ item }) {
   )
 }
 
-// ── Press card — 16:9 outlet card, links out to the original article ────────
+// ── Press card — small link chip, no photo. Links out to the original article.
 
 function PressCard({ item }) {
   return (
@@ -102,26 +102,19 @@ function PressCard({ item }) {
       href={item.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex-none w-56 md:w-72 group"
+      className="group flex-none w-64 md:w-72 flex items-start gap-3 px-4 py-3.5 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:border-white/20 transition-colors"
     >
-      {/* Thumbnail stand-in — outlet name, no photo */}
-      <div className="relative aspect-video overflow-hidden rounded bg-white/5 flex items-center justify-center">
-        <span className="text-sm uppercase tracking-widest text-white/30 group-hover:text-white/50 transition-colors">
-          {item.outlet}
-        </span>
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      </div>
-
-      {/* Metadata below */}
-      <div className="mt-2">
+      <div className="min-w-0 flex-1">
+        <p className="text-xs uppercase tracking-widest text-white/40 mb-1.5">
+          {item.outlet} · {item.year}
+        </p>
         <p className="text-sm text-white leading-snug line-clamp-2 group-hover:text-white/80 transition-colors">
           {item.headline}
         </p>
-        <p className="text-xs text-white/40 mt-0.5">
-          {item.outlet} · {item.year}
-        </p>
       </div>
-
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="opacity-40 group-hover:opacity-70 transition-opacity mt-1 flex-none">
+        <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+      </svg>
     </a>
   )
 }
