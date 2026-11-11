@@ -4,10 +4,8 @@ import { useKeanu } from '../context/KeanuContext'
 
 // Profile switcher roster — Netflix "who's watching"-style.
 const PROFILES = [
-  { id: 'bc', initials: 'BC', name: 'Blais Cameron',    keanu: false },
-  { id: 'jk', initials: 'JK', name: 'John Krasinski',   keanu: false },
-  { id: 'ss', initials: 'SS', name: 'Steven Spielberg', keanu: false },
-  { id: 'kr', initials: 'KR', name: 'Keanu Reeves',     keanu: true  },
+  { id: 'bc', initials: 'BC', name: 'Blais Cameron', keanu: false },
+  { id: 'kr', initials: 'KR', name: 'Keanu Reeves',  keanu: true  },
 ]
 
 // Navigation — appears on every page.
