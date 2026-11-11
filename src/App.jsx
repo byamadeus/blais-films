@@ -6,6 +6,8 @@ import Film from './pages/Film'
 import About from './pages/About'
 import Commercial from './pages/CommercialPage'
 import News from './pages/News'
+import { KeanuProvider } from './context/KeanuContext'
+import KeanuOverlay from './components/KeanuOverlay'
 
 // Scrolls to the top whenever the route changes (including back/forward)
 function ScrollToTop() {
@@ -19,9 +21,10 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <>
+    <KeanuProvider>
       <Analytics />
       <ScrollToTop />
+      <KeanuOverlay />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/film/:id" element={<Film />} />
@@ -30,6 +33,6 @@ export default function App() {
         {/* Hidden — not linked from Navigation or Footer, URL only */}
         <Route path="/news" element={<News />} />
       </Routes>
-    </>
+    </KeanuProvider>
   )
 }
